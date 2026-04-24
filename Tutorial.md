@@ -20,21 +20,23 @@ This workflow helps by:
 
 ## Step 1: Import or create workflow
 This workflow is built on top of the existing template:
+
 ![Initial—Template](asset/Initial—Template.png)
 
 You can either start from the template or import the workflow directly.
 In this tutorial, we will import the workflow to save time.
-- Download the .yml file:
-![Smart Feedback Analyzer Workflow DSL](Smart-Feedback-Analyzer-v2.yml). 
+- Download the .yml file: [Smart Feedback Analyzer Workflow DSL](Smart-Feedback-Analyzer-v2.yml). 
 
 In Dify, 
 1. Click “Create App”
 2. Select “Import DSL File”
 3. Upload the .yml file
+
 ![import-dsl](asset/import-dsl.png)
 ![upload-dsl](asset/upload-dsl.png)
 
-Once imported, you see the full workflow:
+Once imported, you should see the full workflow:
+
 ![workflow-diagram](asset/workflow-diagram.png)
 
 ### Workflow Structure
@@ -49,14 +51,19 @@ The workflow includes 7 main parts:
 
 
 ## Step 2: Set input for Start Node
-Hover mouse over 'Start' Node, and click 'Run this step'. A panel will appear on the right:
+Hover mouse over '**Start**' Node, and click '**Run this step**'. A panel will appear on the right:
+
 ![Start-Node](asset/Start-Node.png)
 
-For a quick test, format your feedback like this JSON: ["feedback1", "feedback2" ...].
+For a quick test, format your feedback like this JSON: 
+```json
+["feedback1", "feedback2" ...]
+```
 
-You may also see an option called 'Customer_Feedback_File'. This is for CSV input, but it is not used in this version of the workflow, you can skip it. 
+You may also see an option called '**Customer_Feedback_File**'. This is for CSV input, but it is not used in this version of the workflow, you can skip it. 
 
-Click 'Start Run' to test the node. A successful output will look like this:
+Click '**Start Run**' to test the node. A successful output will look like this:
+
 ![success-start](asset/success-start.png)
 
 
@@ -65,6 +72,7 @@ Click on an LLM node (for example, LLM1).
 - Click the model name
 - Open **Model Settings**
 - Choose a model from the dropdown
+
 ![LLM1-node-model](asset/LLM1-node-model.png)
 
 ![Model-dropdown](asset/Model-dropdown.png)
@@ -90,7 +98,8 @@ Repeat these steps for each LLM node.
 ## Step 4: Run a full test
 Click '**Test run**' in the top right of the screen, this will start running the whole workflow from beginning to end. It will take a while if you test run the whole workflow at once. 
 
-Enter your input. For a quick test, you can copy text below and paste to the entry.  
+Enter your input. For a quick test, you can copy text below and paste to the entry. 
+```json
 [
   "App crashes when I open the camera",
   "Love the dark mode!",
@@ -98,6 +107,7 @@ Enter your input. For a quick test, you can copy text below and paste to the ent
   "Can you add search to history?",
   "Login takes 10 seconds every time"
 ]
+```
 
 ![test-run](asset/test-run.png)
 
@@ -117,10 +127,11 @@ This may happen in the current version, try the following:
 ![success-reformat](asset/success-reformat.png)
 
 *Example Output*
-Test result:
+```json
 {
   "readable_output": "## 🚀 Action Plan\n\n| Issue | Recommended Action | Owner | Urgency | Next Step |\n|-------|--------------------|-------|---------|------------|\n| Camera crashes on app open | Add crashlytics logging for camera module and implement null-check guard on camera initialization | engineering | immediate | Instrument camera module with crashlytics to capture stack trace on next crash |\n| Payment processing failures | Implement idempotent payment retries with exponential backoff and add detailed error logging | engineering | immediate | Add structured logging to payment service and test with sandbox API credentials |\n| General app stability improvements | Conduct performance audit and fix top memory leaks identified in Profiler | engineering | short_term | Run Xcode Instruments to profile app and document top 5 memory leak locations |\n"
 }
+```
 
 ## Step 5: Use the Web App
 To share and showcase your workflow: 
@@ -135,6 +146,7 @@ Click the small icon on the top-left (next to your workflow title) of the panel 
 ![find-workflow-web-link](asset/find-workflow-web-link.png)
 
 Copy the generated URL, you can now share and test your workflow through web link. 
+
 ![workflow-web-link](asset/workflow-web-link.png)
 
 
