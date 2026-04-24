@@ -1,0 +1,777 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  icon_type: emoji
+  mode: workflow
+  name: Smart Feedback Analyzer
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/minimax:0.0.14@38f89e65d3575f79514dfee49b93f858e8fb9301665a36aeffe800a248a48717
+    version: null
+kind: app
+version: 0.6.0
+workflow:
+  conversation_variables: []
+  environment_variables: []
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        attachment_image_file_size_limit: 2
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        file_upload_limit: 50
+        image_file_batch_limit: 10
+        image_file_size_limit: 10
+        single_chunk_attachment_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: false
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: llm
+      id: 1711529033302-source-1776958208878-target
+      selected: false
+      source: '1711529033302'
+      sourceHandle: source
+      target: '1776958208878'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1776958208878-source-1777014470333-target
+      selected: false
+      source: '1776958208878'
+      sourceHandle: source
+      target: '1777014470333'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: llm
+      id: 1777014470333-source-1777017138423-target
+      selected: false
+      source: '1777014470333'
+      sourceHandle: source
+      target: '1777017138423'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1777017138423-source-1777020105645-target
+      selected: false
+      source: '1777017138423'
+      sourceHandle: source
+      target: '1777020105645'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: code
+      id: 1777020105645-source-1777020558647-target
+      source: '1777020105645'
+      sourceHandle: source
+      target: '1777020558647'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: end
+      id: 1777020558647-source-1777024490155-target
+      source: '1777020558647'
+      sourceHandle: source
+      target: '1777024490155'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: Start
+        type: start
+        variables:
+        - default: 'Stuck on "Queued" and 0% after clicking "Save & Process" in Knowledge
+            Base
+
+            '
+          label: Customer Review
+          max_length: 48
+          options: []
+          required: false
+          type: paragraph
+          variable: review
+        - allowed_file_extensions: []
+          allowed_file_types:
+          - document
+          allowed_file_upload_methods:
+          - local_file
+          - remote_url
+          default: ''
+          hint: ''
+          label: Customer_Feedback_File
+          options: []
+          placeholder: ''
+          required: false
+          type: file
+          variable: Customer_Feedback_File
+      dragging: false
+      height: 135
+      id: '1711529033302'
+      position:
+        x: -58.78174008020579
+        y: 2085.474314448858
+      positionAbsolute:
+        x: -58.78174008020579
+        y: 2085.474314448858
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        author: Dify
+        desc: ''
+        height: 387
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"Overview","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Purpose:","type":"text","version":1},{"type":"linebreak","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"This
+          workflow transforms raw customer feedback into structured insights, aggregates
+          key patterns, and generates actionable recommendations for product and operations
+          teams.","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"How
+          it works (high-level):","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          12px;","text":"Collect raw feedback input (single or multiple entries)","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          12px;","text":"Use LLM to classify and structure each feedback","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          12px;","text":"Use a code node to aggregate statistics (counts, urgency
+          distribution, key examples)","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          12px;","text":"Use LLM to prioritize issues based on impact","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          12px;","text":"Generate clear action plans for the team","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":5}],"direction":null,"format":"","indent":0,"type":"list","version":1,"textStyle":"font-size:
+          12px;","listType":"bullet","start":1,"tag":"ul"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Target
+          users:","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Product
+          Managers","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Operations
+          teams","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Customer
+          experience teams","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":3}],"direction":null,"format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"},{"children":[],"direction":null,"format":"start","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"For
+          the first time user, please refer ''","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"","text":"Quick
+          Start''","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"
+          sticker below. ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 885
+      height: 387
+      id: '1718995253775'
+      position:
+        x: -646.5115640046632
+        y: 1643.3626474447753
+      positionAbsolute:
+        x: -646.5115640046632
+        y: 1643.3626474447753
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 885
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: MiniMax-M2.5
+          provider: langgenius/minimax/minimax
+        prompt_template:
+        - id: 42905d6b-7a5f-4b76-84b4-aa1694ed324c
+          role: system
+          text: "You are a product operations assistant. Classify each customer feedback\
+            \ and assign urgency score and sentiment.\n\nThe input is a JSON array\
+            \ of feedback entries.\nProcess each item independently and return one\
+            \ result per item: {{#1711529033302.review#}}\nOutput strict JSON as shown\
+            \ below, with no extra text. Return ONLY valid JSON. Do NOT use markdown\
+            \ code blocks. Do NOT wrap the output in ```json.\n\nOutput format:\n\
+            {\n  \"classified_feedbacks\": [\n    {\n      \"id\": 0,\n      \"original_text\"\
+            : \"the exact feedback string\",\n      \"category\": \"one of [bug, feature_request,\
+            \ complaint, praise, question]\",\n      \"urgency_score\": \"integer\
+            \ 1-5\",\n      \"sentiment\": \"one of [negative, neutral, positive]\"\
+            \n    }\n  ]\n}\n\n\nRules:\n- urgency_score 5: critical (app crash, payment\
+            \ failure, data loss, blocked usage)\n- urgency_score 4: major frustration\
+            \ or repeated complaints\n- urgency_score 3: moderate issues or important\
+            \ feature requests\n- urgency_score 2: minor issues or general questions\n\
+            - urgency_score 1: praise or low-impact feedback\n- sentiment reflects\
+            \ overall tone.\n- If vague → category = question, urgency_score = 2,\
+            \ sentiment = neutral.\n- Keep original_text exactly as given.\n- Assign\
+            \ id sequentially starting from 0."
+        selected: false
+        structured_output_enabled: false
+        title: 'LLM1: Classifier'
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1776958208878'
+      position:
+        x: 267.40434653906624
+        y: 2158.6938121776757
+      positionAbsolute:
+        x: 267.40434653906624
+        y: 2158.6938121776757
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        code: "import json\n\ndef main(classified_json_str: str):\n    try:\n    \
+          \    cleaned = classified_json_str.strip()\n        parsed = json.loads(cleaned)\n\
+          \        \n    except Exception as e:\n        return {\"result\": f\"JSON\
+          \ parse error: {str(e)}\"}\n\n    items = parsed.get(\"classified_feedbacks\"\
+          , [])\n\n    if not items:\n        return {\"result\": \"No feedback items\
+          \ found. Check input format.\"}\n\n    total = len(items)\n    by_category\
+          \ = {}\n    by_urgency = {}\n    by_sentiment = {}\n    top_urgent = []\n\
+          \n    for it in items:\n        cat = it.get(\"category\", \"unknown\")\n\
+          \        by_category[cat] = by_category.get(cat, 0) + 1\n\n        urg =\
+          \ str(it.get(\"urgency_score\", 1))\n        by_urgency[urg] = by_urgency.get(urg,\
+          \ 0) + 1\n\n        sen = it.get(\"sentiment\", \"neutral\")\n        by_sentiment[sen]\
+          \ = by_sentiment.get(sen, 0) + 1\n\n        if it.get(\"urgency_score\"\
+          , 0) >= 4:\n            top_urgent.append({\n                \"id\": it.get(\"\
+          id\"),\n                \"text\": it.get(\"original_text\", \"\"),\n   \
+          \             \"category\": cat,\n                \"urgency_score\": it.get(\"\
+          urgency_score\", 0)\n            })\n\n    top_urgent = sorted(\n      \
+          \  top_urgent,\n        key=lambda x: x[\"urgency_score\"],\n        reverse=True\n\
+          \    )[:5]\n\n    summary = {\n        \"total_feedback\": total,\n    \
+          \    \"by_category\": by_category,\n        \"by_urgency\": by_urgency,\n\
+          \        \"by_sentiment\": by_sentiment,\n        \"top_urgent_examples\"\
+          : top_urgent\n    }\n\n    summary_json = json.dumps(summary, indent=2)\n\
+          \n    return {\"result\": summary_json}"
+        code_language: python3
+        outputs:
+          result:
+            children: null
+            type: string
+        selected: false
+        title: Aggregator
+        type: code
+        variables:
+        - value_selector:
+          - '1776958208878'
+          - text
+          value_type: string
+          variable: classified_json_str
+      height: 52
+      id: '1777014470333'
+      position:
+        x: 619.6862001932158
+        y: 2047.5210436198745
+      positionAbsolute:
+        x: 619.6862001932158
+        y: 2047.5210436198745
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: MiniMax-M2.5
+          provider: langgenius/minimax/minimax
+        prompt_template:
+        - id: 5598ec0a-ce53-43bd-91a1-427bd69e274b
+          role: system
+          text: "You are a product manager. Based on the aggregated summary and top\
+            \ urgent examples, identify the top 3 most important issues to solve.\n\
+            \nInput: Here is the aggregated summary and top urgent examples: {{#1777014470333.result#}}\n\
+            \nOutput strict JSON as shown below, with no extra text. Return ONLY valid\
+            \ JSON. Do NOT use markdown code blocks. Do NOT wrap the output in ```json.\n\
+            \nOutput format:\n{\n  \"ranked_issues\": [\n    {\n      \"rank\": 1,\n\
+            \      \"issue_summary\": \"short title of the problem\",\n      \"business_priority\"\
+            : \"high/medium/low\",\n      \"representative_feedback\": \"one exact\
+            \ feedback quote that best illustrates the issue\",\n      \"justification\"\
+            : \"why this is a priority (frequency, severity, sentiment, business impact)\"\
+            \n    }\n  ]\n}\n\n\nRules:\n- Output exactly 3 items. If less than 3\
+            \ distinct issues exist, use \"Other improvements\" for remaining ranks\
+            \ with business_priority = low.\n- business_priority = high: urgency_score\
+            \ 4-5 or appears in top_urgent_examples or count >= 3.\n- business_priority\
+            \ = medium: moderate frequency or urgency_score 3.\n- business_priority\
+            \ = low: minor issues, feature requests, or praise.\n- representative_feedback\
+            \ must be copied exactly from original feedback.\n- justification under\
+            \ 25 words.\n- No extra text outside JSON."
+        selected: false
+        title: 'LLM2: Priority Analyzer'
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1777017138423'
+      position:
+        x: 964.1499100220936
+        y: 2140.1822940375187
+      positionAbsolute:
+        x: 964.1499100220936
+        y: 2140.1822940375187
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        author: hu.peiqi@outlook.com
+        desc: ''
+        height: 276
+        selected: false
+        showAuthor: false
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"Start Node","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Function","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":
+          ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Accept
+          raw customer feedback as input","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Supports
+          multiple feedback entries in JSON array format","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":2}],"direction":null,"format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Variable","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":":","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""},{"children":[{"detail":0,"format":16,"mode":"normal","style":"font-size:
+          12px;","text":"  - review","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          12px;","text":": customer review text","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":16,"textStyle":"font-size:
+          12px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          12px;","text":"    -  Customer_Feedback_File: option to upload csv file","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          12px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          12px;","textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 268
+      height: 276
+      id: '1777017622112'
+      position:
+        x: -63.531962272422106
+        y: 2257.9967328793746
+      positionAbsolute:
+        x: -63.531962272422106
+        y: 2257.9967328793746
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 268
+    - data:
+        author: hu.peiqi@outlook.com
+        desc: ''
+        height: 554
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"Quick Start","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"Click ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"“Test Run”","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" in the top-right corner. ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"Enter your customer feedback when prompted. If you have multiple
+          entries, follow the format shown in the ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"yellow guide","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" on the left.","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":2}],"direction":null,"format":"","indent":0,"type":"list","version":1,"textStyle":"font-size:
+          14px;","listType":"bullet","start":1,"tag":"ul"},{"children":[],"direction":null,"format":"start","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"If the workflow ","type":"text","version":1},{"detail":0,"format":2,"mode":"normal","style":"font-size:
+          14px;","text":"does not","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" return results or appears to be stuck loading:","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          14px;"},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"Run each node manually by hovering over it and selecting ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"“Run this step.”","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" Execute nodes in order to avoid dependency issues.","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"A successful node run will show a green checkmark in the
+          top-right corner.","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"To verify details, click the node and open the ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"“Last Run”","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" tab (next to ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"“Settings”","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"). The status should be ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"“Success\"","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":", and you can view the details of output.","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":"You can view the final output of the workflow by clicking
+          on the ","type":"text","version":1},{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"“Reformat Output”","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          14px;","text":" code node after run all nodes in order. ","type":"text","version":1}],"direction":null,"format":"start","indent":0,"type":"listitem","version":1,"value":4}],"direction":null,"format":"","indent":0,"type":"list","version":1,"textStyle":"font-size:
+          14px;","listType":"bullet","start":1,"tag":"ul"}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: pink
+        title: ''
+        type: ''
+        width: 321
+      height: 554
+      id: '1777017846109'
+      position:
+        x: -401.29714694012114
+        y: 2078.635510554132
+      positionAbsolute:
+        x: -401.29714694012114
+        y: 2078.635510554132
+      selected: true
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 321
+    - data:
+        author: hu.peiqi@outlook.com
+        desc: ''
+        height: 373
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"LLM1: Classifier","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          12px;","text":"Function: ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          12px;"},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Analyze
+          each feedback entry and convert it into structured data","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Classify
+          into one of: ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"bug","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":", ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"feature_request","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":", ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"complaint","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":", ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"praise","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":", ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"question","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Assign
+          urgency score from 1–5","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Detect
+          sentiment: ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"negative","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":", ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"neutral","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":", ","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"positive","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":4},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Preserve
+          original text for traceability","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":5}],"direction":null,"format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          12px;","text":"Variable:","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          12px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          Input: (Start)review","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          Output: JSON with structured feedback list (","type":"text","version":1},{"detail":0,"format":16,"mode":"normal","style":"","text":"classified_feedbacks)","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 339
+      height: 373
+      id: '1777017951523'
+      position:
+        x: 233.22508356346833
+        y: 2306.8721922681016
+      positionAbsolute:
+        x: 233.22508356346833
+        y: 2306.8721922681016
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 339
+    - data:
+        author: hu.peiqi@outlook.com
+        desc: ''
+        height: 410
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Code Node: Aggregator ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          14px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          14px;"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          12px;","text":"Function: ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          12px;"},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Parse
+          LLM1 output into structured JSON","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Compute
+          summary statistics:","type":"text","version":1},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Total
+          number of feedback items","type":"text","version":1}],"direction":null,"format":"","indent":1,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Distribution
+          by category","type":"text","version":1}],"direction":null,"format":"","indent":1,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Distribution
+          by urgency","type":"text","version":1}],"direction":null,"format":"","indent":1,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Distribution
+          by sentiment","type":"text","version":1}],"direction":null,"format":"","indent":1,"type":"listitem","version":1,"value":4}],"direction":null,"format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Extract
+          top urgent cases (urgency ≥ 4)","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Normalize
+          inconsistent formats (e.g., string → integer)","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":4}],"direction":null,"format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          12px;","text":"Variable:","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          12px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          12px;","text":"- Input: ","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"(LLM1
+          Text) classified_json_str ","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          12px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"font-size:
+          12px;","text":"- Ouput: result (","type":"text","version":1},{"detail":0,"format":0,"mode":"normal","style":"","text":"aggregated
+          insights in JSON)","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":"font-size:
+          12px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          12px;","textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textStyle":"font-size:
+          14px;","textFormat":0}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 312
+      height: 410
+      id: '1777018078539'
+      position:
+        x: 595.9381749496047
+        y: 2153.0857686213685
+      positionAbsolute:
+        x: 595.9381749496047
+        y: 2153.0857686213685
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 312
+    - data:
+        author: hu.peiqi@outlook.com
+        desc: ''
+        height: 369
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"LLM2: Priority Analyzer","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Function：","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Analyze
+          aggregated statistics and high-priority examples (from Aggregator)","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Identify
+          the most critical issues affecting users","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Rank
+          focus areas based on frequency and urgency","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":3},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Provide
+          a structured prioritization rationale","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":4}],"direction":null,"format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":1,"mode":"normal","style":"","text":"Variable：","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          Input: (Aggregator) result","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          Output: JSON with prioritized insights (ranked_issues)","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 295
+      height: 369
+      id: '1777018209188'
+      position:
+        x: 944.5886560013129
+        y: 2289.6495298973314
+      positionAbsolute:
+        x: 944.5886560013129
+        y: 2289.6495298973314
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 295
+    - data:
+        author: hu.peiqi@outlook.com
+        desc: ''
+        height: 268
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          14px;","text":"Test Example/Format for Input","type":"text","version":1},{"type":"linebreak","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          14px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"[","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"App
+          crashes when I open the camera\",","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"Love
+          the dark mode!\",","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"Payment
+          failed twice today\",","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"Can
+          you add search to history?\",","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"  \"Login
+          takes 10 seconds every time\"","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"]","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: yellow
+        title: ''
+        type: ''
+        width: 253
+      height: 268
+      id: '1777019785697'
+      position:
+        x: -665.4116598755272
+        y: 2140.1822940375187
+      positionAbsolute:
+        x: -665.4116598755272
+        y: 2140.1822940375187
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 253
+    - data:
+        context:
+          enabled: false
+          variable_selector: []
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: MiniMax-M2.5
+          provider: langgenius/minimax/minimax
+        prompt_template:
+        - id: a2a0cbab-c6c8-4e7b-b47f-0cf0e357e622
+          role: system
+          text: "You are a product operations lead. For each ranked issue, provide\
+            \ a concrete action plan.\n\nOutput strict JSON as shown below, with no\
+            \ extra text. Return ONLY valid JSON. Do NOT use markdown code blocks.\
+            \ Do NOT wrap the output in ```json.\n\nOutput format:\n{\n  \"action_plan\"\
+            : [\n    {\n      \"issue_summary\": \"same as in ranked_issues\",\n \
+            \     \"recommended_action\": \"specific, actionable step (e.g., 'Add\
+            \ crashlytics logging for camera module')\",\n      \"owner\": \"engineering\
+            \ / design / product / support\",\n      \"urgency\": \"immediate / short_term\
+            \ / long_term\",\n      \"next_step\": \"first concrete task (max 20 words)\"\
+            \n    }\n  ]\n}\n\nRules:\n- For business_priority = high → urgency =\
+            \ immediate or short_term.\n- For low priority → urgency = long_term.\n\
+            - recommended_action must be something a team can execute; avoid vague\
+            \ words like \"improve\" or \"consider\".\n- next_step should be doable\
+            \ within a day for immediate, or a week for short_term.\n- Output exactly\
+            \ the same number of actions as input issues (usually 3).\n- No extra\
+            \ text outside JSON."
+        - id: 82433232-664f-4cc0-a3a7-c88624538c10
+          role: user
+          text: 'Based on these ranked issues, create an action plan: {{#1777017138423.text#}}'
+        selected: false
+        title: 'LLM3: Action Planner'
+        type: llm
+        vision:
+          enabled: false
+      height: 88
+      id: '1777020105645'
+      position:
+        x: 1282.2797851233124
+        y: 2039.4657437364945
+      positionAbsolute:
+        x: 1282.2797851233124
+        y: 2039.4657437364945
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        author: hu.peiqi@outlook.com
+        desc: ''
+        height: 327
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          16px;","text":"LLM3: Action Planner","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          16px;"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          12px;","text":"Function:","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          12px;"},{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Translate
+          prioritized issues (from LLM2) into concrete action steps","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":1},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Provide
+          recommendations for product and operations teams","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":2},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"Suggest
+          next steps with clear ownership and impact","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"listitem","version":1,"value":3}],"direction":null,"format":"","indent":0,"type":"list","version":1,"listType":"bullet","start":1,"tag":"ul"},{"children":[],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          12px;"},{"children":[{"detail":0,"format":1,"mode":"normal","style":"font-size:
+          12px;","text":"Variable:","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":1,"textStyle":"font-size:
+          12px;"},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          Input: LLM2 output text","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"-
+          Output: JSON with structured action plan","type":"text","version":1}],"direction":null,"format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":null,"format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 293
+      height: 327
+      id: '1777020385774'
+      position:
+        x: 1274.6943793582643
+        y: 2174.5624892984392
+      positionAbsolute:
+        x: 1274.6943793582643
+        y: 2174.5624892984392
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 293
+    - data:
+        code: "import json\n\ndef main(action_plan_text: str):\n    try:\n       \
+          \ clean_text = action_plan_text.strip()\n        data = json.loads(clean_text)\n\
+          \        plan = data.get(\"action_plan\", [])\n    except:\n        return\
+          \ {\"readable_output\": \"Error parsing JSON. Raw output:\\n\" + action_plan_text}\n\
+          \    \n    if not plan:\n        return {\"readable_output\": \"No action\
+          \ items found.\"}\n    \n    md = \"## \U0001F680 Action Plan\\n\\n\"\n\
+          \    md += \"| Issue | Recommended Action | Owner | Urgency | Next Step\
+          \ |\\n\"\n    md += \"|-------|--------------------|-------|---------|------------|\\\
+          n\"\n    for item in plan:\n        title = item.get(\"issue_summary\",\
+          \ \"N/A\")\n        action = item.get(\"recommended_action\", \"N/A\")\n\
+          \        owner = item.get(\"owner\", \"N/A\")\n        urgency = item.get(\"\
+          urgency\", \"N/A\")\n        next_step = item.get(\"next_step\", \"N/A\"\
+          )\n\n        row = f\"| {title} | {action} | {owner} | {urgency} | {next_step}\
+          \ |\\n\"\n        md += row\n    \n    return {\"readable_output\": md}\n"
+        code_language: python3
+        desc: Convert JSON output to markdown for better readability.
+        outputs:
+          readable_output:
+            children: null
+            type: string
+        selected: false
+        title: Reformat Output
+        type: code
+        variables:
+        - value_selector:
+          - '1777020105645'
+          - text
+          value_type: string
+          variable: action_plan_text
+      height: 96
+      id: '1777020558647'
+      position:
+        x: 1580.6827652905893
+        y: 2088.026274382468
+      positionAbsolute:
+        x: 1580.6827652905893
+        y: 2088.026274382468
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    - data:
+        outputs:
+        - value_selector:
+          - '1777020558647'
+          - readable_output
+          value_type: string
+          variable: readable_output
+        selected: false
+        title: END
+        type: end
+      height: 88
+      id: '1777024490155'
+      position:
+        x: 1862.7667642343738
+        y: 2100.5472928202494
+      positionAbsolute:
+        x: 1862.7667642343738
+        y: 2100.5472928202494
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 242
+    viewport:
+      x: 507.68926994481853
+      y: -1822.9560826920244
+      zoom: 0.9583884936860215
+  rag_pipeline_variables: []

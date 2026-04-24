@@ -1,0 +1,34 @@
+Feedback,Title,URL,Details,,,
+1,Dataset not found” when uploading documents to Knowledge Base,https://forum.dify.ai/t/dataset-not-found-when-uploading-documents-to-knowledge-base/234,"Error: ""Dataset not found"" when uploading documents to Knowledge Base
+
+Hello Dify team,
+
+I've encountered a repeated error when trying to upload a document to a knowledge base.
+
+Steps:
+1. I created a knowledge base from the ""Knowledge"" tab.
+2. Opened the knowledge base and clicked ""Add Document"".
+3. Chose a small PDF or TXT file (tested several).
+4. Selected ""Hybrid Search"" and clicked ""Save & Process"".
+5. I get an error message that says: ""Dataset not found"".
+
+I tried:
+- Uploading different formats and small-size documents
+- Renaming files with only ASCII characters
+- Switching to another account
+- Using different browsers and incognito mode
+
+But the issue persists.  
+Can you please check if there is a system-side problem?
+
+Thank you!",,,
+2,Problem with custom tools automatically being removed during use,https://forum.dify.ai/t/topic/1074,"Although it could still be debugged with prompt words when first added. However, after leaving the interface, regardless of whether it was saved or not, returning to the agent orchestration interface would always display a yellow exclamation mark (tool has been removed). After ruling out the reason of the asynchronous detection interface (after leaving the interface, Dify has a logic to asynchronously detect whether the tool can be used, it will ping the interface’s URL itself, if it cannot connect, it will automatically remove the tool), the yellow exclamation mark still persists.
+After ruling out communication issues such as firewalls, a blind spot was finally found in the database logic: the tool ID in the database is api_provider.id, which is a UUID type value, while the provider_id for custom tools when added is a string type. After adding a custom tool, when the Python backend attempts to link the two values, it will always return False (even if the values are the same, they cannot match due to different types). The tool provider is determined to be “not found”, and consequently, the system considers the tool’s provider to no longer exist, marks it as deleted_tools, and displays “Tool has been removed” on the frontend. This issue has not been resolved after this update.",,,
+3,1.14正式版啥时候发布呢？我需要skill这个功能,https://forum.dify.ai/t/1-14-skill/1681,1.14正式版啥时候发布呢？我需要skill这个功能。还有就是，创建agents的模式什么时候能支持skill,,,
+4,进入llm节点要加载非常久是怎么回事，要怎么排查问题,https://forum.dify.ai/t/llm/1768,我这边有一个LLM节点提示词大概是4000个字，运行到这个节点的时候，又时候20s左右就能运行出结果，但是有时候要运行10min，初步排查感觉不是调用api的返回时间，我可以怎么排查这个问题,,,
+5,Very Good App! I can finally build my own AI appppppplication!,test,,,,
+6,Always timeout! 404! Why! ,test,,,,
+7,Bug found: potential security issue,test,,,,
+8,Is it bug? The link on the tutorial doc is not working ,test,,,,
+9,Wondering what ai usecase everyone is building? ,test,,,,
+10,"I created a chat group, to discuss problems, anyone wanna join?",test,Chat id: 123456789,,,
