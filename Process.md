@@ -44,7 +44,7 @@ To fix those, I changed the design:
 This helps keep important context and reduces overlap between LLMs. 
 
 
-## What you'd change with more time.
+## What I will change with more time
 Due to time constraints, I focued on building a working version first. With more time, I would improve the workflow further:
  - Fix the full Test Run issue (manual node runs work, but full run may still cache)
  - Add a simple dashboard to visualize results
